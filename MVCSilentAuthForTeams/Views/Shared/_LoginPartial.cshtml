@@ -1,11 +1,11 @@
 ﻿@if (Request.IsAuthenticated)
 {
     <text>
-    <ul class="nav navbar-nav navbar-right">
-        <li class="navbar-text">
+    <ul class="nav navbar-nav navbar-right mr-auto">
+        <li class="navbar-text ">
             Hello, @User.Identity.Name!
         </li>
-        <li>
+        <li class="nav-item">
             @Html.ActionLink("Sign out", "SignOut", "Account")
         </li>
     </ul>
@@ -13,17 +13,17 @@
 }
 else
 {
-<ul class="nav navbar-nav navbar-right">
+<ul class="nav navbar-nav navbar-right mr-auto">
     @* * NCW Replaced with if block*@
     @*<li>@Html.ActionLink("Sign in", "SignIn", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
 
     @if (Request.UserAgent.IndexOf("Teams") == -1 && (Request.UrlReferrer == null ? "" : Request.UrlReferrer.Host) != "teams.microsoft.com")
     {
-        <li>@Html.ActionLink("Sign in", "SignIn", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", tenantId = ViewBag.TenantId })</li>
+        <li class="nav-item">@Html.ActionLink("Sign in", "SignIn", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", tenantId = ViewBag.TenantId })</li>
     }
     else
     {
-        <li>@Html.ActionLink("Sign in", "msteamsSilent", "Auth")</li>
+        <li class="nav-item">@Html.ActionLink("Sign in", "msteamsSilent", "Auth")</li>
     }
 </ul>
 }

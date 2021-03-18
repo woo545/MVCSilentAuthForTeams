@@ -13,7 +13,17 @@
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Sign in", "SignIn", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+<ul class="nav navbar-nav navbar-right">
+    @* * NCW Replaced with if block*@
+    @*<li>@Html.ActionLink("Sign in", "SignIn", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
+
+    @if (Request.UserAgent.IndexOf("Teams") == -1 && (Request.UrlReferrer == null ? "" : Request.UrlReferrer.Host) != "teams.microsoft.com")
+    {
+        <li>@Html.ActionLink("Sign in", "SignIn", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", tenantId = ViewBag.TenantId })</li>
+    }
+    else
+    {
+        <li>@Html.ActionLink("Sign in", "Start", "Auth")</li>
+    }
+</ul>
 }

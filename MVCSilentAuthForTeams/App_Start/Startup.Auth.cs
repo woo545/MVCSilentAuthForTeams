@@ -10,6 +10,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OpenIdConnect;
 using Owin;
+using Microsoft.Owin.Host.SystemWeb;
 
 namespace MVCSilentAuthForTeams
 {
@@ -22,7 +23,12 @@ namespace MVCSilentAuthForTeams
         {
             app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
 
-            app.UseCookieAuthentication(new CookieAuthenticationOptions { });
+            app.UseCookieAuthentication(new CookieAuthenticationOptions {
+                CookieSameSite = (Microsoft.Owin.SameSiteMode?)SameSiteMode.None,
+                CookieHttpOnly = true,
+                CookieSecure = CookieSecureOption.Always,
+                CookieManager = new SameSiteCookieManager(new SystemWebCookieManager())
+            });
 
             app.UseOpenIdConnectAuthentication(
                 new OpenIdConnectAuthenticationOptions

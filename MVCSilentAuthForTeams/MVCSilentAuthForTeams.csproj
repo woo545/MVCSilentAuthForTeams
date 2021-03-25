@@ -209,6 +209,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\SameSiteCookieManager.cs" />
+    <Compile Include="Helper\SameSiteCookieRewriter.cs" />
+    <Compile Include="Helper\SameSiteSupport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

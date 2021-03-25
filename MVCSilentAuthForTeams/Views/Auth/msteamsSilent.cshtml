@@ -17,6 +17,9 @@
         <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="sX04U9NXSNX5Pnu/6XQFTTpHNBiCoUD9Oxhd156yuJr//mfNbkaThg+tMcw3FwfF3InzgYfb+MZPUHCcqHRFuxvfiGo=" />
     </div>
     <input type="hidden" name="hdnIdToken" id="hdnIdToken" />
+    @*<input type="hidden" name="hdnUid" id="hdnUid" />
+    <input type="hidden" name="hdnTid" id="hdnTid" />
+    <input type="hidden" name="hdnUn" id="hdnUn" />*@
 </form>
 
 <!-- Logout button -->
@@ -91,6 +94,7 @@
                         token = authContext.getCachedToken(config.clientId);
                     }
 
+                    debugger;
                     postTokenForAuth(token);
                 } else {
                     console.log("Failed to get id token silently: " + errDesc);
@@ -124,6 +128,8 @@
                     let idToken = authContext.getCachedToken(config.clientId);
                     if (idToken) {
                         //showUserInformation(idToken);
+
+                        debugger;
                         postTokenForAuth(idToken);
                     } else {
                         console.error("Error getting cached id token. This should never happen.");
@@ -146,7 +152,10 @@
         }
 
         function postTokenForAuth(idToken) {
-			$("#" + hdnIdToken).val(btoa(idToken));
+            $("#" + hdnIdToken).val(btoa(idToken));
+            //$("#" + hdnUId).val("A");
+            //$("#" + hdnTid).val("B");
+            //$("#" + hdnUn).val("C");
             $("#" + frmPostToken).submit();
         }
 

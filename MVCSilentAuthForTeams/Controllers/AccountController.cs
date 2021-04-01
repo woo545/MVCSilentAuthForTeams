@@ -42,24 +42,24 @@ namespace MVCSilentAuthForTeams.Controllers
             return View();
         }
 
-        public ActionResult SignInCallBack()
-        {
-            SetCookie("test", "test", "test");
-            return RedirectToAction("Index", "Home");
-        }
+        //public ActionResult SignInCallBack()
+        //{
+        //    SetCookie("test", "test", "test");
+        //    return RedirectToAction("Index", "Home");
+        //}
 
-        private void SetCookie(string userid, string tenantId, string userName)
-        {            
+        //private void SetCookie(string userid, string tenantId, string userName)
+        //{            
 
-            // And fake a login to create a membership cookie with OWIN cookie authentication.
-            //Note we're not setting any sameSite attributes here.
-            var claims = new[] { new Claim(ClaimTypes.NameIdentifier, "Dufus.Neanderthal") };
-            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationType);
+        //    // And fake a login to create a membership cookie with OWIN cookie authentication.
+        //    //Note we're not setting any sameSite attributes here.
+        //    var claims = new[] { new Claim(ClaimTypes.NameIdentifier, "Dufus.Neanderthal") };
+        //    var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationType);
             
-            var ctx = HttpContext.GetOwinContext();
-            var authManager = ctx.Authentication;
-            authManager.SignIn(new AuthenticationProperties { IsPersistent = false }, identity);
-            //}
-        }
+        //    var ctx = HttpContext.GetOwinContext();
+        //    var authManager = ctx.Authentication;
+        //    authManager.SignIn(new AuthenticationProperties { IsPersistent = false }, identity);
+        //    //}
+        //}
     }
 }
